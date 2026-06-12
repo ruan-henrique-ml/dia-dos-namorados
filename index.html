@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Amor ❤️</title>
+    <style>
+        /* Importando Fontes */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+        /* Variáveis de Cores e Estilos */
+        :root {
+            --primary-color: #ff4d6d;
+            --secondary-color: #c9184a;
+            --bg-color: #fff0f3;
+            --text-color: #2b2d42;
+            --card-bg: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffccd5, #fff0f3);
+            color: var(--text-color);
+            overflow-x: hidden;
+            cursor: default; /* Você pode mudar para um cursor de coração se quiser na web */
+        }
+
+        /* Efeito de Scroll Suave */
+        html { scroll-behavior: smooth; }
+
+        /* Animação de corações caindo */
+        .heart {
+            position: fixed;
+            top: -10vh;
+            font-size: 1.5rem;
+            transform: translateY(0);
+            animation: fall linear infinite;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh); }
+        }
+
+        /* Sections e Containers */
+        section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,204,213,0) 100%);
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(201, 24, 74, 0.5);
+        }
+
+        /* GALLERY SECTION */
+        .gallery-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 15px 15px 25px 15px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .polaroid:nth-child(even) { transform: rotate(3deg); }
+        
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg);
+            z-index: 10;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+
+        .polaroid p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        /* COUNTER / LOVE LETTER SECTION */
+        .letter-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            box-shadow: 0 8px 32px rgba(255, 77, 109, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            margin-top: 2rem;
+        }
+
+        .typewriter-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            min-height: 150px;
+            text-align: center;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2rem;
+            background-color: var(--secondary-color);
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* UTIL CLASS PARA REVEAL ON SCROLL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1rem; padding: 0 1rem; }
+            .gallery-grid { grid-template-columns: 1fr; padding: 0 1rem; }
+            .letter-section { margin: 1rem; padding: 2rem 1rem; }
+            .polaroid img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="hearts-container"></div>
+
+    <section class="hero" id="home">
+        <h1 class="reveal">Feliz Dia dos Namorados!</h1>
+        <p class="reveal">Criei esse cantinho na internet só pra você, para te lembrar do quanto você é especial, do quanto eu te amo e de como cada segundo ao seu lado é o melhor presente que eu poderia ter.</p>
+        <a href="#gallery" class="btn reveal">Nossa História ❤️</a>
+    </section>
+
+    <section id="gallery">
+        <h2 class="gallery-title reveal">Colecionando Momentos</h2>
+        <div class="gallery-grid">
+            
+            <div class="polaroid reveal">
+                <img src="foto1.png" alt="Nós de vermelho">
+                <p>Combinando até nas cores 😍</p>
+            </div>
+
+            <div class="polaroid reveal">
+                <img src="foto2.png" alt="Nós com touca do homem-aranha">
+                <p>Nossas loucuras juntos 🕸️❤️</p>
+            </div>
+
+            <div class="polaroid reveal">
+                <img src="foto3.png" alt="Deitados juntos">
+                <p>Meu porto seguro, meu aconchego.</p>
+            </div>
+
+            <div class="polaroid reveal">
+                <img src="foto4.png" alt="Deitados com biquinho">
+                <p>O biquinho mais lindo do mundo!</p>
+            </div>
+
+            <div class="polaroid reveal">
+                <img src="foto5.png" alt="Preto e branco sorrindo">
+                <p>Seu sorriso ilumina tudo ✨</p>
+            </div>
+
+            <div class="polaroid reveal">
+                <img src="foto6.png" alt="Careta de perto">
+                <p>Com você, posso ser 100% eu mesmo!</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="message">
+        <div class="letter-section reveal">
+            <h2 class="gallery-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Para a mulher da minha vida,</h2>
+            <div class="typewriter-text">
+                <span id="typed-text"></span><span class="cursor"></span>
+            </div>
+            <br>
+            <p style="font-weight: 600; color: var(--secondary-color);">Com todo o amor do mundo,<br>Seu Namorado.</p>
+        </div>
+    </section>
+
+    <footer>
+        Feito com ❤️ especialmente para você. Te amo!
+    </footer>
+
+    <script>
+        // 1. Efeito de Animar ao Rolar a Página (Reveal on Scroll)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Chama uma vez para ativar os elementos que já estão na tela
+
+        // 2. Gerador de Corações caindo no fundo
+        function createHearts() {
+            const container = document.getElementById("hearts-container");
+            const hearts = ["❤️", "💖", "💕", "💘", "💗"];
+            
+            setInterval(() => {
+                const heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+                
+                // Posição horizontal aleatória
+                heart.style.left = Math.random() * 100 + "vw";
+                // Duração da animação aleatória (velocidade de queda)
+                heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+                // Tamanho aleatório
+                heart.style.fontSize = Math.random() * 1.5 + 0.5 + "rem";
+
+                container.appendChild(heart);
+
+                // Remove o coração depois de cair para não pesar o navegador
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }, 300); // Cria um coração a cada 300ms
+        }
+        createHearts();
+
+        // 3. Efeito Máquina de Escrever (Typewriter) na Carta
+        const textToType = "Eu queria encontrar as palavras perfeitas para te dizer o quanto você é importante para mim, mas a verdade é que o meu amor por você não cabe em palavras. Eu amo cada detalhe seu, amo a nossa cumplicidade, as nossas risadas e até os nossos momentos de silêncio. Obrigado por ser minha parceira, minha melhor amiga e o amor da minha vida. Feliz dia dos namorados!";
+        const typedTextElement = document.getElementById('typed-text');
+        let index = 0;
+        let isTyping = false;
+
+        function typeWriter() {
+            if (index < textToType.length) {
+                typedTextElement.innerHTML += textToType.charAt(index);
+                index++;
+                setTimeout(typeWriter, 50); // Velocidade da digitação
+            }
+        }
+
+        // Inicia a digitação apenas quando a pessoa rolar até a seção da carta
+        const messageSection = document.getElementById('message');
+        window.addEventListener('scroll', () => {
+            const rect = messageSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && !isTyping) {
+                isTyping = true;
+                setTimeout(typeWriter, 500); // pequeno delay antes de começar a digitar
+            }
+        });
+
+    </script>
+</body>
+</html>
